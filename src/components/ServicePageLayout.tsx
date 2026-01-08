@@ -1,0 +1,120 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, CheckCircle2, ArrowLeft } from "lucide-react";
+
+interface ServicePageLayoutProps {
+  title: string;
+  description: string;
+  features: string[];
+  benefits: string[];
+  relatedServices: { label: string; path: string }[];
+}
+
+export function ServicePageLayout({ 
+  title, 
+  description, 
+  features, 
+  benefits,
+  relatedServices 
+}: ServicePageLayoutProps) {
+  return (
+    <div>
+      {/* Hero */}
+      <section className="bg-gradient-hero py-16 md:py-20">
+        <div className="container-narrow mx-auto px-6">
+          <Link 
+            to="/services" 
+            className="inline-flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground mb-6"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            All Services
+          </Link>
+          <h1 className="font-display text-3xl font-bold text-primary-foreground md:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-primary-foreground/80">
+            {description}
+          </p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section-padding bg-background">
+        <div className="container-narrow mx-auto">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Features */}
+            <div>
+              <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">
+                What We Deliver
+              </h2>
+              <ul className="mt-6 space-y-4">
+                {features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                    <span className="text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Benefits */}
+            <div className="rounded-xl border border-border bg-card p-6 shadow-card lg:p-8">
+              <h3 className="font-display text-xl font-semibold text-card-foreground">
+                Key Benefits
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {benefits.map((benefit) => (
+                  <li key={benefit} className="flex items-start gap-3 text-muted-foreground">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="section-padding bg-secondary/50">
+        <div className="container-narrow mx-auto">
+          <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">
+            Related Services
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {relatedServices.map((service) => (
+              <Link
+                key={service.path}
+                to={service.path}
+                className="card-hover rounded-lg border border-border bg-card p-4 shadow-card"
+              >
+                <span className="font-medium text-card-foreground">{service.label}</span>
+                <ArrowRight className="mt-2 h-4 w-4 text-accent" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-primary">
+        <div className="container-narrow mx-auto text-center">
+          <h2 className="font-display text-2xl font-bold text-primary-foreground md:text-3xl">
+            Ready to Get Started?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-primary-foreground/80">
+            Schedule a consultation to discuss how we can support your organization.
+          </p>
+          <div className="mt-8">
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/contact">
+                Schedule Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

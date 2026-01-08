@@ -1,37 +1,32 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Search, Users, CheckCircle, ArrowRight, CheckCircle2 } from "lucide-react";
+import { FileText, Search, Users, CheckCircle, ArrowRight } from "lucide-react";
 
 const capabilities = [
   {
     icon: Search,
     title: "Opportunity Identification",
-    description: "We help you identify and evaluate federal and state contract opportunities aligned with your organizational capabilities.",
+    description: "Identify and evaluate contract opportunities aligned with your capabilities.",
+    path: "/government/opportunity",
   },
   {
     icon: FileText,
     title: "Proposal Development",
-    description: "Expert support in developing compliant, competitive proposals that clearly articulate your value proposition.",
+    description: "Develop compliant, competitive proposals that win.",
+    path: "/government/proposal",
   },
   {
     icon: Users,
     title: "Teaming & Partnerships",
-    description: "Guidance on building effective prime-subcontractor relationships and joint venture arrangements.",
+    description: "Build effective prime-subcontractor relationships.",
+    path: "/government/teaming",
   },
   {
     icon: CheckCircle,
     title: "Post-Award Support",
-    description: "Implementation planning and compliance support to ensure successful contract execution.",
+    description: "Ensure successful contract execution from day one.",
+    path: "/government/post-award",
   },
-];
-
-const contractTypes = [
-  "Healthcare Service Delivery Contracts",
-  "Medical Staffing & Personnel Services",
-  "Healthcare IT & Systems Support",
-  "Training & Education Programs",
-  "Quality Assurance & Compliance Services",
-  "Program Management & Advisory",
 ];
 
 export default function GovernmentPage() {
@@ -49,76 +44,38 @@ export default function GovernmentPage() {
         </div>
       </section>
 
-      {/* Intro */}
+      {/* Capabilities Grid */}
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-2xl text-center mb-12">
             <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-              Navigate the Government Contracting Landscape
+              Our Capabilities
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Government healthcare contracts offer significant opportunities—but the pursuit process is complex. Clarivis provides the expertise you need to compete effectively and execute successfully.
+              End-to-end support for your government contracting journey.
             </p>
           </div>
 
-          {/* Capabilities */}
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {capabilities.map((capability) => (
-              <div
-                key={capability.title}
-                className="card-hover rounded-xl border border-border bg-card p-6 shadow-card"
+              <Link
+                key={capability.path}
+                to={capability.path}
+                className="card-hover group flex flex-col rounded-xl border border-border bg-card p-6 shadow-card lg:p-8"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                   <capability.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 font-display text-xl font-semibold text-card-foreground">
                   {capability.title}
                 </h3>
-                <p className="mt-2 text-muted-foreground">{capability.description}</p>
-              </div>
+                <p className="mt-2 flex-1 text-muted-foreground">{capability.description}</p>
+                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-accent">
+                  Learn more
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contract Types */}
-      <section className="section-padding bg-secondary/50">
-        <div className="container-narrow mx-auto">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-                Contract Areas We Support
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Our team has experience supporting organizations across a wide range of healthcare contract categories.
-              </p>
-              <ul className="mt-8 space-y-3">
-                {contractTypes.map((type) => (
-                  <li key={type} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-accent" />
-                    <span className="text-foreground">{type}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-xl border border-border bg-card p-8 shadow-card">
-              <h3 className="font-display text-xl font-semibold text-card-foreground">
-                Why Partner with Clarivis?
-              </h3>
-              <ul className="mt-6 space-y-4">
-                {[
-                  "Deep understanding of government healthcare requirements",
-                  "Proven proposal development methodology",
-                  "Focus on compliance from pursuit through execution",
-                  "Experienced in both prime and subcontractor roles",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-muted-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
       </section>
