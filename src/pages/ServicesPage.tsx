@@ -1,85 +1,37 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, FileCheck, Users, Target, ClipboardCheck, BookOpen, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Shield, FileCheck, Users, ClipboardCheck, BookOpen, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    id: "accreditation",
     icon: Shield,
-    title: "Accreditation Readiness & Self-Study Support",
-    description: "Prepare your organization for successful accreditation with expert guidance through every phase of the process.",
-    features: [
-      "Gap analysis and readiness assessments",
-      "Self-study document development",
-      "Policy and procedure review",
-      "Staff education and training",
-      "Mock survey preparation",
-    ],
+    title: "Accreditation Readiness",
+    description: "Comprehensive preparation for successful accreditation outcomes.",
+    path: "/services/accreditation",
   },
   {
-    id: "site-visit",
     icon: ClipboardCheck,
     title: "Site Visit Preparation",
-    description: "Ensure your team and facilities are ready for surveyor visits with comprehensive preparation strategies.",
-    features: [
-      "Leadership and staff interview preparation",
-      "Document organization and accessibility",
-      "Physical environment assessments",
-      "Tracer activity practice sessions",
-      "Day-of coordination support",
-    ],
+    description: "Ensure your team and facilities are ready for surveyor visits.",
+    path: "/services/site-visit",
   },
   {
-    id: "compliance",
     icon: FileCheck,
-    title: "Regulatory Compliance Consulting",
-    description: "Navigate complex regulatory requirements with clarity and confidence.",
-    features: [
-      "Federal and state regulatory analysis",
-      "Compliance program development",
-      "Risk assessment and mitigation",
-      "Corrective action planning",
-      "Ongoing compliance monitoring strategies",
-    ],
+    title: "Compliance Consulting",
+    description: "Navigate complex regulatory requirements with clarity.",
+    path: "/services/compliance",
   },
   {
-    id: "leadership",
     icon: Users,
-    title: "Interim & Advisory Program Leadership",
-    description: "Experienced healthcare executives providing strategic direction when you need it most.",
-    features: [
-      "Interim executive placement",
-      "Program development and oversight",
-      "Organizational change management",
-      "Performance improvement initiatives",
-      "Transition planning and support",
-    ],
+    title: "Interim Leadership",
+    description: "Experienced executives providing strategic direction.",
+    path: "/services/leadership",
   },
   {
-    id: "government",
-    icon: Target,
-    title: "Government Contract Pursuit Support",
-    description: "Strategic guidance for organizations pursuing federal and state healthcare contracts.",
-    features: [
-      "Opportunity identification and analysis",
-      "Proposal development support",
-      "Compliance requirements navigation",
-      "Subcontractor coordination",
-      "Post-award implementation planning",
-    ],
-  },
-  {
-    id: "training",
     icon: BookOpen,
     title: "Education & Training",
-    description: "Build internal capacity with customized training programs for your team.",
-    features: [
-      "Standards interpretation workshops",
-      "Compliance officer training",
-      "Leadership development programs",
-      "Staff competency education",
-      "Continuing education support",
-    ],
+    description: "Build internal capacity with customized training programs.",
+    path: "/services/training",
   },
 ];
 
@@ -98,41 +50,28 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services List */}
+      {/* Services Grid */}
       <section className="section-padding bg-background">
         <div className="container-narrow mx-auto">
-          <div className="space-y-16">
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                id={service.id}
-                className={`grid items-start gap-8 lg:grid-cols-2 lg:gap-12 ${
-                  index % 2 === 1 ? "lg:direction-rtl" : ""
-                }`}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                key={service.path}
+                to={service.path}
+                className="card-hover group flex flex-col rounded-xl border border-border bg-card p-6 shadow-card"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                    <service.icon className="h-7 w-7" />
-                  </div>
-                  <h2 className="mt-4 font-display text-2xl font-bold text-foreground md:text-3xl">
-                    {service.title}
-                  </h2>
-                  <p className="mt-3 text-lg text-muted-foreground">{service.description}</p>
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <service.icon className="h-6 w-6" />
                 </div>
-                <div className={`rounded-xl border border-border bg-card p-6 shadow-card ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <h4 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                    What We Deliver
-                  </h4>
-                  <ul className="mt-4 space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                        <span className="text-card-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <h3 className="mt-4 font-display text-xl font-semibold text-card-foreground">
+                  {service.title}
+                </h3>
+                <p className="mt-2 flex-1 text-muted-foreground">{service.description}</p>
+                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-accent">
+                  Learn more
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -145,7 +84,7 @@ export default function ServicesPage() {
             Need a Customized Solution?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Every organization is unique. Let us design a consulting engagement tailored to your specific needs and objectives.
+            Every organization is unique. Let us design a consulting engagement tailored to your specific needs.
           </p>
           <div className="mt-8">
             <Button variant="cta" size="xl" asChild>
