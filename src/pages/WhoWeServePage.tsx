@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Building2, Hospital, Stethoscope, Shield, ArrowRight } from "lucide-react";
+import seeYourselfBg from "@/assets/see-yourself-bg.png";
 
 const audiences = [
   {
@@ -144,8 +145,14 @@ export default function WhoWeServePage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary">
-        <div className="container-narrow mx-auto text-center">
+      <section className="section-padding relative overflow-hidden">
+        <img
+          src={seeYourselfBg}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/80" />
+        <div className="container-narrow relative mx-auto text-center">
           <h2 className="font-display text-3xl font-bold text-primary-foreground md:text-4xl">
             See Yourself Here?
           </h2>
