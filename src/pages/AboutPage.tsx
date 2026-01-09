@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Target, Eye, Heart, ArrowRight } from "lucide-react";
+import { Target, Eye, Heart, ArrowRight, Sparkles } from "lucide-react";
 import partnershipBg from "@/assets/partnership-bg.png";
 import ownerProfile from "@/assets/owner-profile.jpg";
 
@@ -123,32 +123,20 @@ export default function AboutPage() {
       {/* Why Clarivis */}
       <section className="section-padding bg-secondary/50">
         <div className="container-narrow mx-auto">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-                Why "Clarivis"?
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                Our name combines "clarity" and "vision"—reflecting our commitment to providing clear insight and forward-looking guidance to the organizations we serve.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                In a complex regulatory environment, clarity is essential. We help our clients see the path forward, understand their options, and make informed decisions that support their mission.
-              </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-primary/10 px-4 py-2">
+              <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" />
+              <span className="text-sm font-semibold text-primary">Clarity + Vision</span>
             </div>
-            <div className="relative">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-hero shadow-elevated">
-                <div className="flex h-full items-center justify-center p-8">
-                  <div className="text-center">
-                    <div className="font-display text-5xl font-bold text-primary-foreground/90">
-                      Clarivis
-                    </div>
-                    <div className="mt-4 text-lg text-primary-foreground/70">
-                      Clarity + Vision
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+              Why "Clarivis"?
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Our name combines "clarity" and "vision"—reflecting our commitment to providing clear insight and forward-looking guidance to the organizations we serve.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              In a complex regulatory environment, clarity is essential. We help our clients see the path forward, understand their options, and make informed decisions that support their mission.
+            </p>
           </div>
         </div>
       </section>
