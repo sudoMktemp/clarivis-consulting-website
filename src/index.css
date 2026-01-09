@@ -24,9 +24,9 @@
     --secondary: 210 15% 95%;
     --secondary-foreground: 215 25% 15%;
 
-    /* Muted Grays */
+    /* Muted Grays - WCAG AA compliant (4.5:1 contrast) */
     --muted: 210 15% 93%;
-    --muted-foreground: 215 15% 45%;
+    --muted-foreground: 215 20% 38%;
 
     /* Teal Accent - Healthcare Clarity */
     --accent: 175 45% 35%;
@@ -83,7 +83,7 @@
     --secondary-foreground: 210 20% 95%;
 
     --muted: 215 20% 20%;
-    --muted-foreground: 210 15% 60%;
+    --muted-foreground: 210 15% 70%;
 
     --accent: 175 45% 45%;
     --accent-foreground: 215 25% 10%;
@@ -120,6 +120,37 @@
 
   h1, h2, h3 {
     font-family: var(--font-display);
+  }
+
+  /* Enhanced focus states for keyboard navigation - WCAG 2.1 AA */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
+
+  /* Remove focus ring for mouse users */
+  :focus:not(:focus-visible) {
+    @apply outline-none ring-0;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --muted-foreground: 215 25% 25%;
+      --border: 215 25% 50%;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
