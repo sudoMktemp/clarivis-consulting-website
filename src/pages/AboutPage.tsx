@@ -91,9 +91,9 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="mt-12 grid items-center gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-2">
-              <div className="overflow-hidden rounded-2xl shadow-elevated">
+          <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row">
+            <div className="shrink-0">
+              <div className="h-32 w-32 overflow-hidden rounded-xl shadow-elevated">
                 <img
                   src={ownerProfile}
                   alt="Eric A. Brichto, Esq."
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-            <div className="lg:col-span-3">
+            <div>
               <h3 className="font-display text-2xl font-bold text-foreground">
                 Eric A. Brichto, Esq.
               </h3>
