@@ -7,6 +7,7 @@ import serviceAccreditation from "@/assets/service-accreditation.jpg";
 import serviceCompliance from "@/assets/service-compliance.jpg";
 import serviceRecruitment from "@/assets/service-recruitment.jpg";
 import serviceGovernment from "@/assets/service-government.jpg";
+import serviceTraining from "@/assets/service-training.jpg";
 
 const services = [
   {
@@ -38,11 +39,11 @@ const services = [
     alt: "Magnifying glass examining approved compliance documents representing government contract review",
   },
   {
-    image: serviceAccreditation,
+    image: serviceTraining,
     title: "Education & Training",
     description: "Build internal capacity with customized training programs.",
     path: "/services/training",
-    alt: "Professional reviewing compliance documents on laptop with digital checklist icons",
+    alt: "Healthcare professional and consultant reviewing training materials together in office",
   },
 ];
 
