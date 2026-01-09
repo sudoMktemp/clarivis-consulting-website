@@ -2,23 +2,17 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Building2, Hospital, Stethoscope, Shield, ArrowRight } from "lucide-react";
 import seeYourselfBg from "@/assets/see-yourself-bg.png";
+import audienceCompliance from "@/assets/audience-compliance.png";
+import audienceHealthcare from "@/assets/audience-healthcare.png";
+import audienceGovernment from "@/assets/audience-government.jpg";
+import audienceExecutives from "@/assets/audience-executives.jpg";
 
 const audiences = [
-  {
-    icon: Hospital,
-    title: "Healthcare Organizations",
-    description: "Hospitals, health systems, and clinical facilities seeking accreditation and compliance excellence.",
-    needs: [
-      "Joint Commission, CARF, or AAAHC accreditation",
-      "Regulatory compliance programs",
-      "Quality improvement initiatives",
-      "Operational readiness assessments",
-    ],
-  },
   {
     icon: Shield,
     title: "Compliance & Quality Leaders",
     description: "Directors and officers responsible for maintaining organizational compliance and quality standards.",
+    image: audienceCompliance,
     needs: [
       "Standards interpretation and application",
       "Policy and procedure development",
@@ -27,9 +21,22 @@ const audiences = [
     ],
   },
   {
+    icon: Hospital,
+    title: "Healthcare Organizations",
+    description: "Hospitals, health systems, and clinical facilities seeking accreditation and compliance excellence.",
+    image: audienceHealthcare,
+    needs: [
+      "Joint Commission, CARF, or AAAHC accreditation",
+      "Regulatory compliance programs",
+      "Quality improvement initiatives",
+      "Operational readiness assessments",
+    ],
+  },
+  {
     icon: Building2,
     title: "Government Contractors",
     description: "Organizations pursuing or executing federal and state healthcare contracts.",
+    image: audienceGovernment,
     needs: [
       "Contract compliance requirements",
       "Proposal development support",
@@ -41,6 +48,7 @@ const audiences = [
     icon: Stethoscope,
     title: "Healthcare Executives",
     description: "C-suite leaders and program directors driving strategic healthcare initiatives.",
+    image: audienceExecutives,
     needs: [
       "Interim leadership support",
       "Strategic planning guidance",
@@ -72,8 +80,16 @@ export default function WhoWeServePage() {
             {audiences.map((audience) => (
               <div
                 key={audience.title}
-                className="card-hover flex flex-col rounded-xl border border-border bg-card p-6 shadow-card lg:p-8"
+                className="card-hover flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card"
               >
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={audience.image}
+                    alt={audience.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 lg:p-8">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <audience.icon className="h-6 w-6" />
                 </div>
@@ -93,6 +109,7 @@ export default function WhoWeServePage() {
                       </li>
                     ))}
                   </ul>
+                </div>
                 </div>
               </div>
             ))}
