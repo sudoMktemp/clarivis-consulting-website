@@ -1,28 +1,33 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Search, Users, CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+import govPostAward from "@/assets/gov-post-award.jpg";
+import govProposal from "@/assets/gov-proposal.jpg";
+import govTeaming from "@/assets/gov-teaming.jpg";
+import govOpportunity from "@/assets/gov-opportunity.jpg";
 
 const capabilities = [
   {
-    icon: Search,
+    image: govOpportunity,
     title: "Opportunity Identification",
     description: "Identify and evaluate contract opportunities aligned with your capabilities.",
     path: "/government/opportunity",
   },
   {
-    icon: FileText,
+    image: govProposal,
     title: "Proposal Development",
     description: "Develop compliant, competitive proposals that win.",
     path: "/government/proposal",
   },
   {
-    icon: Users,
+    image: govTeaming,
     title: "Teaming & Partnerships",
     description: "Build effective prime-subcontractor relationships.",
     path: "/government/teaming",
   },
   {
-    icon: CheckCircle,
+    image: govPostAward,
     title: "Post-Award Support",
     description: "Ensure successful contract execution from day one.",
     path: "/government/post-award",
@@ -61,18 +66,25 @@ export default function GovernmentPage() {
               <Link
                 key={capability.path}
                 to={capability.path}
-                className="card-hover group flex flex-col rounded-xl border border-border bg-card p-6 shadow-card lg:p-8"
+                className="card-hover group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                  <capability.icon className="h-6 w-6" />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={capability.image}
+                    alt={capability.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-                <h3 className="mt-4 font-display text-xl font-semibold text-card-foreground">
-                  {capability.title}
-                </h3>
-                <p className="mt-2 flex-1 text-muted-foreground">{capability.description}</p>
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-accent">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-xl font-semibold text-card-foreground">
+                    {capability.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-muted-foreground">{capability.description}</p>
+                  <div className="mt-4 flex items-center gap-2 text-sm font-medium text-accent">
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
               </Link>
             ))}
